@@ -37,7 +37,7 @@ app.get("/api/tickets", (req, res)=>{
     const searchText = req.query.searchText;
     Ticket.find().then((data)=>{
         if(searchText){
-            res.send(data.filter((ticket)=> ticket.title.includes(searchText)))
+            res.send(data.filter((ticket)=> ticket.title.toLowerCase().includes(searchText.toLowerCase())))
         }
         else{
             res.send(data);
