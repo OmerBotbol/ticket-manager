@@ -34,13 +34,34 @@ const Ticket = mongoose.model("Ticket", ticketSchema)
 app.use(express.static("client/build"));
 
 app.get("/api/tickets", (req, res)=>{
-    const searchText = req.query.searchText
+    const searchText = req.query.searchText;
     Ticket.find().then((data)=>{
         if(searchText){
             res.send(data.filter((ticket)=> ticket.title.includes(searchText)))
         }
         else{
-            res.send(data)
+            res.send(data);
+        }
+    })
+})
+
+app.patch("/api/tickets/:ticketid/:isDone", (req, res)=>{
+    const {ticketid} = req.params;
+    const {isDone} = req.params;
+    Ticket.findById(ticketid).then((data)=>{
+        if(isDone === "done" || isDone === "undone"){
+            if(isDone === "done"){
+                data.done = true;
+            }
+            if(isDone === "undone") {
+                data.done = false; 
+            }
+            data.save().then(()=>{
+                res.send({updated: true});
+            })
+        }
+        else{
+            res.send({error: "please return done/undone to change the done status"})
         }
     })
 })
