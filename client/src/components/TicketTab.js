@@ -11,6 +11,7 @@ function TicketTab(props) {
                 {props.ticket.labels.map((label, i)=><span key={i} className="label">{label}</span>)}
             </div>
             }
+            <button className="hideTicketButton" onClick={(event)=>props.handleClick(props.ticket._id)}>hide</button>
         </div>
     )
 }
