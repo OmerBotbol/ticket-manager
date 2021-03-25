@@ -12,7 +12,7 @@ function Header(props) {
                 <button id="restoreHideTickets" onClick={()=> props.restoreAll()}>Restore</button>
             </div>
             }
-            <input id="searchInput" onChange={(event)=>props.handleChange(event.target.value)}/>
+            <input id="searchInput" placeholder="Enter the title you wish to find" onChange={(event)=>props.handleChange(event.target.value)}/>
         </div>
     )
 }

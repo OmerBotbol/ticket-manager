@@ -10,7 +10,7 @@ function TicketTab(props) {
         if(props.ticket.done){
             setIsDone("done")
         }
-    }, [])
+    }, [props.ticket.done])
 
     useEffect(()=>{
         if(props.restore === true){

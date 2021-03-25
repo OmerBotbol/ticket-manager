@@ -34,13 +34,9 @@ const mockData = [
   },
 ]
 
-const mockReply = {
-  updated: true
-}
-
 let page;
 let browser;
-let encoder;
+// let encoder;
 
 jest.setTimeout(30000);
 const projectName = '1.Ticket Manager UI';

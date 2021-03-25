@@ -42,6 +42,8 @@ app.get("/api/tickets", (req, res)=>{
         else{
             res.send(data);
         }
+    }).catch((err)=>{
+        res.status(500).send({error: err.message})
     })
 })
 
@@ -61,8 +63,14 @@ app.patch("/api/tickets/:ticketid/:isDone", (req, res)=>{
             })
         }
         else{
-            res.send({error: "please return done/undone to change the done status"})
+            const err = new Error("Invalid 'done' status")
+            console.log(err.message)
+            res.status(400).send({error: err.message})
         }
+    }).catch(()=>{
+        const err = new Error("Invalid ID")
+        console.log(err.message);
+        res.status(400).send({error: err.message})
     })
 })
 
