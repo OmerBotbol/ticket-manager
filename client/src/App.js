@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TicketTab from './components/TicketTab'
 import SearchArea from './components/SearchArea';
+import Header from './components/Header';
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -35,9 +36,7 @@ function App() {
 
   return (
     <>
-      <h1>Ticket Manager</h1>
-      <div><span id="hideTicketsCounter">{counter}</span> tickets hidden</div>
-      <button id="restoreHideTickets" onClick={()=> restoreAll()}>Restore</button>
+      <Header counter={counter} restoreAll={restoreAll}/>
       <SearchArea handleChange={handleChange}/>
       {tickets.map((ticket, i)=>{
       return <TicketTab key={i} ticket={ticket} handleClick={handleClick}/>
