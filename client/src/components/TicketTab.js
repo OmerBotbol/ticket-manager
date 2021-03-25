@@ -56,7 +56,7 @@ function TicketTab(props) {
             </div>
             <div className="control-buttons">
                 <button className="hideTicketButton" onClick={()=>handleClick()}>hide</button>
-                <button onClick={(event)=>changeDoneStatus(event.target.innerText)}>{isDone === "done" ? <>undone</> : <>done</>}</button>
+                <button className="done-status-button" onClick={(event)=>changeDoneStatus(event.target.innerText)}>{isDone === "done" ? <>undone</> : <>done</>}</button>
             </div>
         </div>
         }
