@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/ticketTab.css'
 
 function TicketTab(props) {
+const [isDone, setIsDone] = useState("undone")
+
+useEffect(()=>{
+    console.log(props.ticket.done)
+    if(props.ticket.done){
+        setIsDone("done")
+    }
+},[])
     return (
-        <div className="ticket">
+        <div className={`ticket ${isDone}`}>
             <h3 className="ticket-title">{props.ticket.title}</h3>
             <p className="content">{props.ticket.content}</p>
             <div className="ticket-bottom">
@@ -14,7 +22,7 @@ function TicketTab(props) {
             </div>
             }
             </div>
-            <button className="hideTicketButton" onClick={(event)=>props.handleClick(props.ticket._id)}>hide</button>
+            <button className="hideTicketButton" onClick={()=>props.handleClick(props.ticket._id)}>hide</button>
         </div>
     )
 }
