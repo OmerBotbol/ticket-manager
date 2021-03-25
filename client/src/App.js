@@ -6,14 +6,12 @@ import './styles/App.css'
 
 function App() {
   const [tickets, setTickets] = useState([]);
-  const [originalTickets, setOriginalTickets] = useState([]);
-  const [counter, setCounter] = useState(0)
+  const [restore, activeRestore] = useState(false);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     axios.get('api/tickets').then((ticketsToDisplay)=>{
-      const copyOfTickets = [...ticketsToDisplay.data]
       setTickets(ticketsToDisplay.data);
-      setOriginalTickets(copyOfTickets)
     })
   }, [])
 
@@ -23,15 +21,13 @@ function App() {
     })
   }
 
-  function handleClick(idToRemove){
-    const index = tickets.findIndex((ticket)=>ticket._id === idToRemove);
-    tickets.splice(index, 1);
+  function changeCounter(){
     setCounter(counter + 1)
+    activeRestore(false)
   }
 
   function restoreAll(){
-    const newTicket = originalTickets.slice()
-    setTickets(newTicket)
+    activeRestore(true)
     setCounter(0)
   }
 
@@ -39,7 +35,7 @@ function App() {
     <>
       <Header counter={counter} restoreAll={restoreAll} handleChange={handleChange}/>
       {tickets.map((ticket, i)=>{
-      return <TicketTab key={i} ticket={ticket} handleClick={handleClick}/>
+      return <TicketTab key={i} ticket={ticket} changeCounter={changeCounter} restore={restore}/>
       })}
     </>
   )

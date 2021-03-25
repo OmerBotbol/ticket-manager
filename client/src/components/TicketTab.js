@@ -3,31 +3,46 @@ import React, { useEffect, useState } from 'react'
 import '../styles/ticketTab.css'
 
 function TicketTab(props) {
-const [isDone, setIsDone] = useState("undone")
+    const [isDone, setIsDone] = useState("undone");
+    const [visible, setvisible] = useState(true);
 
-useEffect(()=>{
-    if(props.ticket.done){
-        setIsDone("done")
-    }
-}, [])
-
-function changeDoneStatus(isDoneStatus){
-    if(isDoneStatus === "done"){
-        axios.patch(`/api/tickets/${props.ticket._id}/undone`).then(()=>{
-            setIsDone("undone")
-        }).catch((err)=>{
-            console.log(err.message)
-        })
-    }
-    else{
-        axios.patch(`/api/tickets/${props.ticket._id}/done`).then(()=>{
+    useEffect(()=>{
+        if(props.ticket.done){
             setIsDone("done")
-        }).catch((err)=>{
-            console.log(err.message)
-        })
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(props.restore === true){
+            setvisible(true)
+        }
+    }, [props.restore])
+
+    function changeDoneStatus(isDoneStatus){
+        if(isDoneStatus === "undone"){
+            axios.patch(`/api/tickets/${props.ticket._id}/undone`).then(()=>{
+                setIsDone("undone")
+            }).catch((err)=>{
+                console.log(err.message)
+            })
+        }
+        else{
+            axios.patch(`/api/tickets/${props.ticket._id}/done`).then(()=>{
+                setIsDone("done")
+            }).catch((err)=>{
+                console.log(err.message)
+            })
+        }
     }
-}
+
+    function handleClick(){
+        const changedVisible = !visible;
+        setvisible(changedVisible);
+        props.changeCounter();
+    }
     return (
+        <>
+        {!visible ? <></> :
         <div className={`ticket ${isDone}`}>
             <h3 className="ticket-title">{props.ticket.title}</h3>
             <p className="content">{props.ticket.content}</p>
@@ -39,9 +54,13 @@ function changeDoneStatus(isDoneStatus){
             </div>
             }
             </div>
-            <button className="hideTicketButton" onClick={()=>props.handleClick(props.ticket._id)}>hide</button>
-            <button onClick={(event)=>changeDoneStatus(event.target.innerText)}>{isDone === "done" ? <>done</> : <>undone</>}</button>
+            <div className="control-buttons">
+                <button className="hideTicketButton" onClick={()=>handleClick()}>hide</button>
+                <button onClick={(event)=>changeDoneStatus(event.target.innerText)}>{isDone === "done" ? <>undone</> : <>done</>}</button>
+            </div>
         </div>
+        }
+        </>
     )
 }
 
