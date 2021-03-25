@@ -7,7 +7,7 @@
 }
 
 .done{
-    background-color: lightgreen;
+    background-color: rgb(145, 196, 228);
 }
 
 .ticket-bottom{
@@ -19,7 +19,6 @@
     border: black 1px solid;
     margin: 5px;
     padding: 0px 5px;
-    /* background-color: ; */
 }
 
 .control-buttons{
