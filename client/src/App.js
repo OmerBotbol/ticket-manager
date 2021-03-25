@@ -29,7 +29,8 @@ function App() {
   }
 
   function restoreAll(){
-    setTickets(originalTickets)
+    const newTicket = originalTickets.slice()
+    setTickets(newTicket)
     setCounter(0)
   }
 
