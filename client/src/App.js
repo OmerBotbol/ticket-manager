@@ -10,9 +10,9 @@ function App() {
 
   useEffect(() => {
     axios.get('api/tickets').then((ticketsToDisplay)=>{
-      const newArr = [...ticketsToDisplay.data]
+      const copyOfTickets = [...ticketsToDisplay.data]
       setTickets(ticketsToDisplay.data);
-      setOriginalTickets(newArr)
+      setOriginalTickets(copyOfTickets)
     })
   }, [])
 

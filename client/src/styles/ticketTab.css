@@ -1,0 +1,24 @@
+.ticket{
+    position: relative;
+    border: black 1px solid;
+    margin: 5px;
+    padding: 10px;
+}
+
+.ticket-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.label{
+    border: black 1px solid;
+    margin: 5px;
+    padding: 0px 5px;
+}
+
+.hideTicketButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
