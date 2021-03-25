@@ -1,9 +1,11 @@
-h1{
-    text-align: center;
-}
-#hide-control{
+#header{
+    position: relative;
     text-align: center;
 }
 #restoreHideTickets{
     margin-left: 10px;
+}
+#searchInput{
+    width: 90vh;
+    margin-top: 10px;
 }

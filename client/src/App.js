@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TicketTab from './components/TicketTab'
-import SearchArea from './components/SearchArea';
 import Header from './components/Header';
 
 function App() {
@@ -36,8 +35,7 @@ function App() {
 
   return (
     <>
-      <Header counter={counter} restoreAll={restoreAll}/>
-      <SearchArea handleChange={handleChange}/>
+      <Header counter={counter} restoreAll={restoreAll} handleChange={handleChange}/>
       {tickets.map((ticket, i)=>{
       return <TicketTab key={i} ticket={ticket} handleClick={handleClick}/>
       })}
