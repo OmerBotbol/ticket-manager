@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import '../styles/ticketTab.css'
 
@@ -5,11 +6,27 @@ function TicketTab(props) {
 const [isDone, setIsDone] = useState("undone")
 
 useEffect(()=>{
-    console.log(props.ticket.done)
     if(props.ticket.done){
         setIsDone("done")
     }
-},[])
+}, [])
+
+function changeDoneStatus(isDoneStatus){
+    if(isDoneStatus === "done"){
+        axios.patch(`/api/tickets/${props.ticket._id}/undone`).then(()=>{
+            setIsDone("undone")
+        }).catch((err)=>{
+            console.log(err.message)
+        })
+    }
+    else{
+        axios.patch(`/api/tickets/${props.ticket._id}/done`).then(()=>{
+            setIsDone("done")
+        }).catch((err)=>{
+            console.log(err.message)
+        })
+    }
+}
     return (
         <div className={`ticket ${isDone}`}>
             <h3 className="ticket-title">{props.ticket.title}</h3>
@@ -23,6 +40,7 @@ useEffect(()=>{
             }
             </div>
             <button className="hideTicketButton" onClick={()=>props.handleClick(props.ticket._id)}>hide</button>
+            <button onClick={(event)=>changeDoneStatus(event.target.innerText)}>{isDone === "done" ? <>done</> : <>undone</>}</button>
         </div>
     )
 }
