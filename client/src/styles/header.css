@@ -1,11 +1,16 @@
 #header{
     position: relative;
     text-align: center;
+    background-color: gray;
+}
+h1{
+    margin-top: 0;
+    padding-top: 0.67em;
 }
 #restoreHideTickets{
     margin-left: 10px;
 }
 #searchInput{
     width: 90vh;
-    margin-top: 10px;
+    margin: 10px 0px;
 }

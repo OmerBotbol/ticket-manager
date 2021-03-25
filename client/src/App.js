@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import TicketTab from './components/TicketTab'
 import Header from './components/Header';
+import './styles/App.css'
 
 function App() {
   const [tickets, setTickets] = useState([]);

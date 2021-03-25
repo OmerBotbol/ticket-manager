@@ -6,10 +6,12 @@ function Header(props) {
     return (
         <div id="header">
             <h1>Ticket Manager</h1>
+            {props.counter !== 0 &&
             <div id="hide-control">
                 <span id="hideTicketsCounter">{props.counter}</span> tickets hidden
                 <button id="restoreHideTickets" onClick={()=> props.restoreAll()}>Restore</button>
             </div>
+            }
             <input id="searchInput" onChange={(event)=>props.handleChange(event.target.value)}/>
         </div>
     )
