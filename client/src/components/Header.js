@@ -13,6 +13,7 @@ function Header(props) {
             </div>
             }
             <input id="searchInput" placeholder="Enter the title you wish to find" onChange={(event)=>props.handleChange(event.target.value)}/>
+            <button onClick={()=>props.openTab()}>{props.openNewTicket ? <> ▲ </>:<> ▼ </>}</button>
         </div>
     )
 }
