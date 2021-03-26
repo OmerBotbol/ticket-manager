@@ -18,5 +18,6 @@ The tickets are loaded from mongoDB database to backend that powered with Expres
 ## testing
 
 to the built-in tests that was given to me I added:
-2. a test for the post entry point in the backend
-1. a test to check to done/undone button.
+
+1. a test for the post entry point in the backend
+2. a test to check to done/undone button.
