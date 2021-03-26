@@ -13,7 +13,10 @@ The tickets are loaded from mongoDB database to backend that powered with Expres
 2. can hide a ticket and all the hidden tickets will be count.
 3. can restore all the the hidden tickets.
 4. can be mark as done/undone.
+5. can add new ticket.
 
 ## testing
 
-to the built-in tests that was given to me I added a test to check to done/undone button.
+to the built-in tests that was given to me I added:
+2. a test for the post entry point in the backend
+1. a test to check to done/undone button.
