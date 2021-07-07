@@ -105,4 +105,35 @@ describe(projectName, () => {
     const revertedTicket = await tickets.findOne({});
     expect(revertedTicket.done).toBe(currentState);
   });
+
+  test("can make post request", async ()=>{
+    const postData = {
+      "title": "need help with making full POST request",
+      "content": "I try to make a post request and failed every time",
+      "userEmail": "omer@gmail.com",
+      "labels": ["axios", "POST"]
+  }
+
+    const correntTickets = await request(app)
+    .get("/api/tickets")
+    .query({
+      searchText: "full",
+    })
+    .expect(200);
+
+    await request(app)
+    .post("/api/tickets")
+    .send(postData)
+    .expect(200)
+
+    const newTickets = await request(app)
+    .get("/api/tickets")
+    .query({
+      searchText: "full",
+    })
+    .expect(200);
+
+    expect(newTickets.body.length).toBe(correntTickets.body.length + 1)
+  })
+
 });

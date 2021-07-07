@@ -1,0 +1,23 @@
+#header{
+    position: relative;
+    text-align: center;
+    background-color: gray;
+}
+h1{
+    margin-top: 0;
+    padding-top: 0.67em;
+}
+#restoreHideTickets{
+    margin-left: 10px;
+}
+#searchInput{
+    width: 50vw;
+    margin: 10px 0px;
+}
+#open-new-ticket-button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}

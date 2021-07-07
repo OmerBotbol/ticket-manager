@@ -1,0 +1,29 @@
+.ticket{
+    position: relative;
+    border: black 1px solid;
+    margin: 7px 15px;
+    padding: 10px;
+    background-color: lightslategray;
+}
+
+.done{
+    background-color: rgb(145, 196, 228);
+}
+
+.ticket-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.label{
+    border: black 1px solid;
+    margin: 5px;
+    padding: 0px 5px;
+}
+
+.control-buttons{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
